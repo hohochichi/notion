@@ -1,6 +1,39 @@
-<a href="https://time.is/Yuen_Long,_Yuen_Long" id="time_is_link" rel="nofollow" style="font-size:36px">Yuen Long 目前的時間:</a>
-<span id="Yuen_Long__Yuen_Long_z419" style="font-size:36px"></span>
-<script src="//widget.time.is/zh_tw.js"></script>
+<html>
+<style>
+body {
+  background-color: #2F3437;
+  color: white;
+  text-align: center;
+  font-family: monospace;
+  font-size: 40px;
+}
+</style>
+<head>
 <script>
-time_is_widget.init({Yuen_Long__Yuen_Long_z419:{template:"TIME<br>DATE", time_format:"hours:minutes", date_format:"monthnum月daynum日dayname "}});
+function startTime() {
+  var today = new Date();
+  var days = ['（日） - ','（一） - ','（二） - ','（三 - ）','（四） - ','（五） - ','(六) - '];
+  var months = ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'];
+  var weekday = days[today.getDay()];
+  var month = today.getMonth()+1;
+  var day = today.getDate();
+  var h = today.getHours();
+  var m = today.getMinutes();
+  m = checkTime(m);
+  document.getElementById('txt').innerHTML =
+  month + "/" + day + weekday + h + ":" + m;
+  var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
 </script>
+</head>
+
+<body onload="startTime()">
+
+<div id="txt"></div>
+
+</body>
+</html>
